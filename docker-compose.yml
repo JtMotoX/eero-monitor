@@ -1,0 +1,21 @@
+version: '3'
+
+volumes:
+  eero-client-data:
+    external:
+      name: eero-client-data
+
+services:
+  eero-monitor:
+    image: jtmotox/eero-client
+    container_name: eero-monitor
+    env_file: .env
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - eero-client-data:/data
+      - ./logs:/logs
+      - ./scripts:/scripts
+      - ./crontab:/etc/crontabs/root
+    entrypoint: ["/bin/sh", "-c", "crond -f -l 8 -L /proc/1/fd/1"]
+    # entrypoint: ["/bin/sh", "-c", "echo 'doing nothing . . .' && tail -f /dev/null"]
