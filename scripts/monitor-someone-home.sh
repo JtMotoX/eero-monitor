@@ -16,12 +16,10 @@ PREVIOUS_COUNT=$(cat "${PREVIOUS_COUNT_FILE}")
 PREVIOUS_COUNT=${PREVIOUS_COUNT:-'0'}
 echo "${IS_SOMEONE_HOME}" >"${PREVIOUS_COUNT_FILE}"
 
-if [[ "${IS_SOMEONE_HOME}" != "${PREVIOUS_COUNT}" ]]; then
-	if [[ ! "${IS_SOMEONE_HOME}" -gt 0 ]]; then
-		echo "Nobody home"
-		./pushover-notify.sh "Nobody home"
-	else
-		echo "Someone is home"
-		./pushover-notify.sh "Someone is home"
-	fi
+if [[ "${IS_SOMEONE_HOME}" -eq 0 && "${PREVIOUS_COUNT}" -gt 0 ]]; then
+	echo "Everybody left"
+	./pushover-notify.sh "Everybody left"
+elif [[ "${IS_SOMEONE_HOME}" -gt 0 && "${PREVIOUS_COUNT}" -eq 0 ]]; then
+	echo "Someone came home"
+	./pushover-notify.sh "Someone came home"
 fi
