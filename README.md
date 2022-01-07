@@ -12,3 +12,8 @@ Monitors your Eero network and sends notifications and/or trigger webhooks for h
 
 1. ```docker-compose up -d```
 1. ```docker-compose logs -f```
+
+---
+
+### Todo:
+- Handle internet outages
