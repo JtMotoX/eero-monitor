@@ -10,6 +10,7 @@ Monitors your Eero network and sends notifications and/or trigger webhooks for h
 
 ## Run:
 
+1. Copy the [sample.env](./sample.env) to [.env](./.env) and make necessary changes
 1. ```docker-compose up -d```
 1. ```docker-compose logs -f```
 
@@ -17,3 +18,4 @@ Monitors your Eero network and sends notifications and/or trigger webhooks for h
 
 ### Todo:
 - Handle internet outages
+- Trigger an Alexa routine (currently just sending Pushover notification for testing)
