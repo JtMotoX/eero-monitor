@@ -3,8 +3,8 @@
 TITLE="Notification from eero-monitor"
 MESSAGE="$1"
 
-if [[ "${pushover_user}" == "" || "${pushover_token}" == "" ]]; then
-    echo "You need to provide the 'pushover_user' and 'pushover_token' environment variables"
+if [[ "${PUSHOVER_USER}" == "" || "${PUSHOVER_TOKEN}" == "" ]]; then
+    echo "You need to provide the 'PUSHOVER_USER' and 'PUSHOVER_TOKEN' environment variables"
     exit 1
 fi
 
@@ -14,8 +14,8 @@ if [[ "${MESSAGE}" == "" ]]; then
 fi
 
 curl -s \
-    --form-string "user=${pushover_user}" \
-    --form-string "token=${pushover_token}" \
+    --form-string "user=${PUSHOVER_USER}" \
+    --form-string "token=${PUSHOVER_TOKEN}" \
     --form-string "title=${TITLE}" \
     --form-string "message=${MESSAGE}" \
     https://api.pushover.net/1/messages.json \
