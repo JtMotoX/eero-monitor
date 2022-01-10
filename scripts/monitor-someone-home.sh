@@ -91,6 +91,7 @@ if [[ "${IS_SOMEONE_HOME}" -eq 0 ]]; then
 		if [[ "${SOMEBODY_HOME_AGO}" -gt ${NOTIFY_GONE_SEC} ]]; then
 			update_config "${MONITOR_FILE}" "ACTION_PERFORMED_STATE" 0
 			echo "Everybody left"
+			curl "https://api.virtualbuttons.com/v1?virtualButton=${VIRTUALBUTTONS_1}&accessCode=${VIRTUALBUTTONS_1_ACCESSCODE}" >/dev/null 2>&1
 			./pushover-notify.sh "Everybody left"
 		fi
 	fi
