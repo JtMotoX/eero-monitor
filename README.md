@@ -18,4 +18,3 @@ Monitors your Eero network and sends notifications and/or trigger webhooks for h
 
 ### Todo:
 - Handle internet outages
-- Trigger an Alexa routine (currently just sending Pushover notification for testing)
