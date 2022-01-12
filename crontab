@@ -1,2 +1,2 @@
 */1 * * * * 				/scripts/monitor-someone-home.sh | sed '/^\s*$/d' | awk '{ print strftime("[%Y-%m-%d %H:%M:%S]"), $0 }' >>/logs/monitor-someone-home.txt 2>&1
-#*/1 * * * * ( sleep 30 ;	/scripts/monitor-someone-home.sh | sed '/^\s*$/d' | awk '{ print strftime("[%Y-%m-%d %H:%M:%S]"), $0 }' >>/logs/monitor-someone-home.txt 2>&1 )
+*/1 * * * * ( sleep 30 ;	/scripts/monitor-someone-home.sh | sed '/^\s*$/d' | awk '{ print strftime("[%Y-%m-%d %H:%M:%S]"), $0 }' >>/logs/monitor-someone-home.txt 2>&1 )
