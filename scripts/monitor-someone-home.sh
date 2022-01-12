@@ -91,8 +91,7 @@ if [[ "${IS_SOMEONE_HOME}" -eq 0 ]]; then
 		if [[ "${SOMEBODY_HOME_AGO}" -gt ${NOTIFY_GONE_SEC} ]]; then
 			update_config "${MONITOR_FILE}" "ACTION_PERFORMED_STATE" 0
 			echo "Everybody left"
-			curl "https://api.virtualbuttons.com/v1?virtualButton=${VIRTUALBUTTONS_1}&accessCode=${VIRTUALBUTTONS_1_ACCESSCODE}" >/dev/null 2>&1
-			./pushover-notify.sh "Everybody left"
+			curl "https://api.voicemonkey.io/trigger?access_token=${VOICEMONKEY_ACCESS}&secret_token=${VOICEMONKEY_SECRET}&monkey=${MONKEY_AWAY}" >/dev/null 2>&1
 		fi
 	fi
 # SOMEBODY IS HOME
@@ -107,6 +106,6 @@ elif [[ "${IS_SOMEONE_HOME}" -gt 0 ]]; then
 	if [[ "${ACTION_PERFORMED_STATE}" -ne 1 ]]; then
 		update_config "${MONITOR_FILE}" "ACTION_PERFORMED_STATE" 1
 		echo "Someone came home"
-		./pushover-notify.sh "Someone came home"
+		curl "https://api.voicemonkey.io/trigger?access_token=${VOICEMONKEY_ACCESS}&secret_token=${VOICEMONKEY_SECRET}&monkey=${MONKEY_HOME}" >/dev/null 2>&1
 	fi
 fi
