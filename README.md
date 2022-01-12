@@ -1,6 +1,6 @@
 # Eero Monitor
 
-Monitors your Eero network and sends notifications and/or trigger webhooks for home automation.
+Monitors your Eero network and sends notifications and/or trigger webhooks for home automation.  This runs a Docker container from [JtMotoX/eero-client-docker](https://github.com/JtMotoX/eero-client-docker) which uses [343max/eero-client](https://github.com/343max/eero-client.git) to get information from your Eero network.
 
 ## Login:
 
