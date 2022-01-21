@@ -8,7 +8,13 @@ Monitors your Eero network and sends notifications and/or trigger webhooks for h
 
 1. ```docker run --rm -it -v eero-client-data:/data jtmotox/eero-client info```
 
-## Run:
+
+
+## Run Individual Scripts:
+
+- ```docker-compose run --rm --entrypoint="/scripts/list-networks.sh" eero-monitor```
+
+## Run Cron:
 
 1. Copy the [sample.env](./sample.env) to [.env](./.env) and make necessary changes
 1. ```docker-compose up -d```
