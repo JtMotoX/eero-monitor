@@ -17,5 +17,5 @@ services:
       - ./logs:/logs
       - ./scripts:/scripts
       - ./crontab:/etc/crontabs/root
-    entrypoint: ["/bin/sh", "-c", "crond -f -l 8 -L /proc/1/fd/1"]
+    entrypoint: ["/scripts/entrypoint.sh"]
     # entrypoint: ["/bin/sh", "-c", "echo 'doing nothing . . .' && tail -f /dev/null"]
