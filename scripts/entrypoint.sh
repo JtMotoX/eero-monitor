@@ -8,4 +8,18 @@ if env | grep -E '^[^=]*=OP:' >/dev/null; then
 	rm -f /tmp/1password-vars.sh
 fi
 
-crond -f -l 8 -L /proc/1/fd/1
+# MAKE SURE WE HAVE ACCESS TO LOG FILES
+if ! { touch /logs/.test && rm -f /logs/.test; }; then
+	echo "ERROR: Access denied 'logs'"
+	echo "note: 'chmod -R 777 logs'"
+	exit 1
+fi
+for file in $(find /logs -type f -name '*.log'); do
+	if [ ! -w "${file}" ]; then
+		echo "ERROR: Access denied '$(basename ${file})'"
+		echo "note: 'chmod -R 777 logs'"
+		exit 1
+	fi
+done
+
+supercronic /crontab >/proc/1/fd/1 2>&1

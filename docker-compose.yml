@@ -7,7 +7,7 @@ volumes:
 
 services:
   eero-monitor:
-    image: jtmotox/eero-client
+    build: .
     container_name: eero-monitor
     env_file: .env
     restart: always
