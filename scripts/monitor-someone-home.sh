@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 ##################################################
 
-function init_config() {
+init_config() {
 	CONFIG_FILE="$1"
 	# CREATE BLANK CONFIG IF CONFIG IS EMPTY OR INVALID
 	MONITOR_CONFIGS=$(cat "${MONITOR_FILE}" 2>/dev/null)
@@ -13,7 +13,7 @@ function init_config() {
 	fi
 }
 
-function determine_jq_arg_type() {
+determine_jq_arg_type() {
 	VAL="$1"
 	# DETERMINE IF VALUE IS JSON VALUE OR STRING
 	if (echo '{}' | jq --argjson val "${VAL}" '.' >/dev/null 2>&1); then
@@ -23,7 +23,7 @@ function determine_jq_arg_type() {
 	fi
 }
 
-function update_config() {
+update_config() {
 	# GET PARAMETERS
 	CONFIG_FILE="$1"
 	KEY="$2"
@@ -35,7 +35,7 @@ function update_config() {
 	echo -e "${CONFIGS}" >"${CONFIG_FILE}"
 }
 
-function get_config() {
+get_config() {
 	CONFIG_FILE="$1"
 	KEY="$2"
 	VAL="$3"
