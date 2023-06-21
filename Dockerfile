@@ -7,4 +7,12 @@ RUN wget https://github.com/aptible/supercronic/releases/download/${SUPERCRONIC_
 COPY --chown=root --chmod=644 ./crontab /crontab
 RUN supercronic -json -test /crontab
 
+RUN mkdir -p /scripts && \
+	printf '#!/bin/sh\nexec "$@"' >/scripts/entrypoint.sh && \
+	chmod 755 /scripts/entrypoint.sh
+
+WORKDIR /scripts
+
 USER 9001:9001
+
+ENTRYPOINT [ "/scripts/entrypoint.sh" ]

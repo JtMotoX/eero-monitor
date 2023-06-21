@@ -22,4 +22,9 @@ for file in $(find /logs -type f -name '*.log'); do
 	fi
 done
 
-supercronic /crontab >/proc/1/fd/1 2>&1
+if [ "$1" = "run" ]; then
+	supercronic /crontab >/proc/1/fd/1 2>&1
+	exit 1
+fi
+
+exec "$@"

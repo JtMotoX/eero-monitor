@@ -12,7 +12,7 @@ Monitors your Eero network and sends notifications and/or trigger webhooks for h
 
 ## Run Individual Scripts:
 
-- ```docker-compose run --rm --entrypoint="/scripts/list-networks.sh" eero-monitor```
+- ```docker-compose run --rm eero-monitor /scripts/list-networks.sh```
 
 ## Run Cron:
 
