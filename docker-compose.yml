@@ -15,5 +15,10 @@ services:
       - ./logs:/logs
       - ./scripts:/scripts
       - ./crontab:/etc/crontabs/root
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2048m"
+        max-file: "5"
     command: [ "run" ]
     # entrypoint: ["/bin/sh", "-c", "echo 'doing nothing . . .' && tail -f /dev/null"]
