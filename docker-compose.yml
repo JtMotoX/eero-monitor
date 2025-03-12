@@ -1,5 +1,3 @@
-version: '3'
-
 volumes:
   eero-client-data:
     name: eero-client-data
